@@ -408,6 +408,33 @@ resource "aws_security_group_rule" "backend_alb_frontend" {
   security_group_id = module.backend_alb.sg_id
 }
 
+resource "aws_security_group_rule" "backend_alb_cart" {
+  type              = "ingress"
+  from_port         = 80
+  to_port           = 80
+  protocol          = "tcp"
+  source_security_group_id = module.cart.sg_id
+  security_group_id = module.backend_alb.sg_id
+}
+
+resource "aws_security_group_rule" "backend_alb_shipping" {
+  type              = "ingress"
+  from_port         = 80
+  to_port           = 80
+  protocol          = "tcp"
+  source_security_group_id = module.shipping.sg_id
+  security_group_id = module.backend_alb.sg_id
+}
+
+resource "aws_security_group_rule" "backend_alb_payment" {
+  type              = "ingress"
+  from_port         = 80
+  to_port           = 80
+  protocol          = "tcp"
+  source_security_group_id = module.payment.sg_id
+  security_group_id = module.backend_alb.sg_id
+}
+
 #Frontend
 resource "aws_security_group_rule" "frontend_vpn" {
   type              = "ingress"
