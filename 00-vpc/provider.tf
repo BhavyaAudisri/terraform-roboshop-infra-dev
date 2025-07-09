@@ -1,16 +1,16 @@
 terraform {
   required_providers {
     aws = {
-      source = "hashicorp/aws"
+      source  = "hashicorp/aws"
       version = "5.98.0"
     }
   }
 
   backend "s3" {
-    bucket = "somi-tf-robo-dev"
-    key    = "tf-robo-dev-vpc"
-    region = "us-east-1"
-    encrypt        = true
+    bucket       = "somi-tf-robo-dev"
+    key          = "tf-robo-dev-vpc"
+    region       = "us-east-1"
+    encrypt      = true
     use_lockfile = true
   }
 }
