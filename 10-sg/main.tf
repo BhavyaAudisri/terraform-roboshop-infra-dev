@@ -32,7 +32,7 @@ module "mysql" {
 }
 
 module "rabbitmq" {
-    #source = "../../terraform-aws-securitygroup"
+    #source = "../../terraform-securitygroup"
     source = "git::https://github.com/BhavyaAudisri/terraform-securitygroup.git?ref=main"
     project_name = var.project_name
     environment = var.environment
@@ -43,7 +43,7 @@ module "rabbitmq" {
 }
 
 module "catalogue" {
-    #source = "../../terraform-aws-securitygroup"
+    #source = "../../terraform-securitygroup"
     source = "git::https://github.com/BhavyaAudisri/terraform-securitygroup.git?ref=main"
     project_name = var.project_name
     environment = var.environment
@@ -54,7 +54,7 @@ module "catalogue" {
 }
 
 module "user" {
-    #source = "../../terraform-aws-securitygroup"
+    #source = "../../terraform-securitygroup"
     source = "git::https://github.com/BhavyaAudisri/terraform-securitygroup.git?ref=main"
     project_name = var.project_name
     environment = var.environment
@@ -65,7 +65,7 @@ module "user" {
 }
 
 module "cart" {
-    #source = "../../terraform-aws-securitygroup"
+    #source = "../../terraform-securitygroup"
     source = "git::https://github.com/BhavyaAudisri/terraform-securitygroup.git?ref=main"
     project_name = var.project_name
     environment = var.environment
@@ -73,10 +73,11 @@ module "cart" {
     sg_name = "cart"
     sg_description = "for cart"
     vpc_id = local.vpc_id
+    common_tags = var.common_tags
 }
 
 module "shipping" {
-    #source = "../../terraform-aws-securitygroup"
+    #source = "../../terraform-securitygroup"
     source = "git::https://github.com/BhavyaAudisri/terraform-securitygroup.git?ref=main"
     project_name = var.project_name
     environment = var.environment
