@@ -7,7 +7,7 @@ resource "aws_instance" "mongodb" {
   tags = merge(
     local.common_tags,
     {
-        Name = "${var.project}-${var.environment}-mongodb"
+        Name = "${var.project_name}-${var.environment}-mongodb"
     }
   )
 }
@@ -46,7 +46,7 @@ resource "aws_instance" "redis" {
   tags = merge(
     local.common_tags,
     {
-        Name = "${var.project}-${var.environment}-redis"
+        Name = "${var.project_name}-${var.environment}-redis"
     }
   )
 }
@@ -85,7 +85,7 @@ resource "aws_instance" "mysql" {
   tags = merge(
     local.common_tags,
     {
-        Name = "${var.project}-${var.environment}-mysql"
+        Name = "${var.project_name}-${var.environment}-mysql"
     }
   )
 }
@@ -124,7 +124,7 @@ resource "aws_instance" "rabbitmq" {
   tags = merge(
     local.common_tags,
     {
-        Name = "${var.project}-${var.environment}-rabbitmq"
+        Name = "${var.project_name}-${var.environment}-rabbitmq"
     }
   )
 }

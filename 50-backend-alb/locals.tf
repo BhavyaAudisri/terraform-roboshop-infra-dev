@@ -4,7 +4,7 @@ locals {
     backend_alb_sg_id = data.aws_ssm_parameter.backend_alb_sg_id.value
 
     common_tags = {
-        Project = var.project
+        Project = var.project_name
         Environment = var.environment
         Terraform = "true"
     }
