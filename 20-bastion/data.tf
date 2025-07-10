@@ -1,5 +1,5 @@
 data "aws_ami" "joindevops" {
-  owners           = ["amazon"]
+  owners           = ["973714476881"]
   most_recent      = true
 
   filter {
