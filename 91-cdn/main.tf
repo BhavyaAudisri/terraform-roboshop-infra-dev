@@ -46,7 +46,7 @@ resource "aws_cloudfront_distribution" "roboshop" {
 
   tags = merge(
     local.common_tags,{
-        Name = "${var.project}-${var.environment}"
+        Name = "${var.project_name}-${var.environment}"
     }
   )
 
