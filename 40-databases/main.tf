@@ -4,6 +4,13 @@ resource "aws_instance" "mongodb" {
   vpc_security_group_ids = [local.mongodb_sg_id]
   subnet_id = local.database_subnet_id
 
+  user_data = <<-EOF
+                #!/bin/bash
+                echo 'ec2-user:DevOps321' | chpasswd
+                sed -i 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+                systemctl restart sshd
+              EOF
+
   tags = merge(
     local.common_tags,
     {
@@ -43,6 +50,13 @@ resource "aws_instance" "redis" {
   vpc_security_group_ids = [local.redis_sg_id]
   subnet_id = local.database_subnet_id
 
+  user_data = <<-EOF
+                #!/bin/bash
+                echo 'ec2-user:DevOps321' | chpasswd
+                sed -i 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+                systemctl restart sshd
+              EOF
+
   tags = merge(
     local.common_tags,
     {
@@ -81,7 +95,15 @@ resource "aws_instance" "mysql" {
   instance_type = "t3.micro"
   vpc_security_group_ids = [local.mysql_sg_id]
   subnet_id = local.database_subnet_id
-  iam_instance_profile = "EC2RoleToFetchSSMParams"
+
+  user_data = <<-EOF
+                #!/bin/bash
+                echo 'ec2-user:DevOps321' | chpasswd
+                sed -i 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+                systemctl restart sshd
+              EOF
+
+  iam_instance_profile = "AmazonEC2RoleforSSM"
   tags = merge(
     local.common_tags,
     {
@@ -120,6 +142,13 @@ resource "aws_instance" "rabbitmq" {
   instance_type = "t3.micro"
   vpc_security_group_ids = [local.rabbitmq_sg_id]
   subnet_id = local.database_subnet_id
+
+  user_data = <<-EOF
+                #!/bin/bash
+                echo 'ec2-user:DevOps321' | chpasswd
+                sed -i 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+                systemctl restart sshd
+              EOF
 
   tags = merge(
     local.common_tags,
