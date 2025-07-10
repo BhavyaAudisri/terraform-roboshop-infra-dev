@@ -1,5 +1,5 @@
 resource "aws_lb_target_group" "catalogue" {
-  name     = "${var.project}-${var.environment}-catalogue" #roboshop-dev-catalogue
+  name     = "${var.project_name}-${var.environment}-catalogue" #roboshop-dev-catalogue
   port     = 8080
   protocol = "HTTP"
   vpc_id   = local.vpc_id
@@ -24,7 +24,7 @@ resource "aws_instance" "catalogue" {
   tags = merge(
     local.common_tags,
     {
-        Name = "${var.project}-${var.environment}-catalogue"
+        Name = "${var.project_name}-${var.environment}-catalogue"
     }
   )
 }
@@ -61,13 +61,13 @@ resource "aws_ec2_instance_state" "catalogue" {
 }
 
 resource "aws_ami_from_instance" "catalogue" {
-  name               = "${var.project}-${var.environment}-catalogue"
+  name               = "${var.project_name}-${var.environment}-catalogue"
   source_instance_id = aws_instance.catalogue.id
   depends_on = [aws_ec2_instance_state.catalogue]
   tags = merge(
     local.common_tags,
     {
-      Name = "${var.project}-${var.environment}-catalogue"
+      Name = "${var.project_name}-${var.environment}-catalogue"
     }
   )
 }
@@ -86,7 +86,7 @@ resource "terraform_data" "catalogue_delete" {
 }
 
 resource "aws_launch_template" "catalogue" {
-  name = "${var.project}-${var.environment}-catalogue"
+  name = "${var.project_name}-${var.environment}-catalogue"
 
   image_id = aws_ami_from_instance.catalogue.id
   instance_initiated_shutdown_behavior = "terminate"
@@ -99,7 +99,7 @@ resource "aws_launch_template" "catalogue" {
     tags = merge(
       local.common_tags,
       {
-        Name = "${var.project}-${var.environment}-catalogue"
+        Name = "${var.project_name}-${var.environment}-catalogue"
       }
     )
   }
@@ -111,7 +111,7 @@ resource "aws_launch_template" "catalogue" {
     tags = merge(
       local.common_tags,
       {
-        Name = "${var.project}-${var.environment}-catalogue"
+        Name = "${var.project_name}-${var.environment}-catalogue"
       }
     )
   }
@@ -120,14 +120,14 @@ resource "aws_launch_template" "catalogue" {
   tags = merge(
       local.common_tags,
       {
-        Name = "${var.project}-${var.environment}-catalogue"
+        Name = "${var.project_name}-${var.environment}-catalogue"
       }
   )
 
 }
 
 resource "aws_autoscaling_group" "catalogue" {
-  name                 = "${var.project}-${var.environment}-catalogue"
+  name                 = "${var.project_name}-${var.environment}-catalogue"
   desired_capacity   = 1
   max_size           = 10
   min_size           = 1
@@ -145,7 +145,7 @@ resource "aws_autoscaling_group" "catalogue" {
     for_each = merge(
       local.common_tags,
       {
-        Name = "${var.project}-${var.environment}-catalogue"
+        Name = "${var.project_name}-${var.environment}-catalogue"
       }
     )
     content{
@@ -170,7 +170,7 @@ resource "aws_autoscaling_group" "catalogue" {
 }
 
 resource "aws_autoscaling_policy" "catalogue" {
-  name                   = "${var.project}-${var.environment}-catalogue"
+  name                   = "${var.project_name}-${var.environment}-catalogue"
   autoscaling_group_name = aws_autoscaling_group.catalogue.name
   policy_type            = "TargetTrackingScaling"
   target_tracking_configuration {

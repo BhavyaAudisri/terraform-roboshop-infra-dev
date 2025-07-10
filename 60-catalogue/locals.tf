@@ -6,7 +6,7 @@ locals {
     catalogue_sg_id = data.aws_ssm_parameter.catalogue_sg_id.value
     backend_alb_listener_arn = data.aws_ssm_parameter.backend_alb_listener_arn.value
     common_tags = {
-        Project = var.project
+        Project = var.project_name
         Environment = var.environment
         Terraform = "true"
     }
