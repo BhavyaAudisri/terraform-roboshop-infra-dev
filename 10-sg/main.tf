@@ -7,6 +7,7 @@ module "mongodb" {
     sg_name = "mongodb"
     sg_description = "for mongodb"
     vpc_id = local.vpc_id
+    common_tags = var.common_tags
 }
 
 module "redis" {
@@ -18,6 +19,7 @@ module "redis" {
     sg_name = "redis"
     sg_description = "for redis"
     vpc_id = local.vpc_id
+    common_tags = var.common_tags
 }
 
 module "mysql" {
@@ -29,6 +31,7 @@ module "mysql" {
     sg_name = "mysql"
     sg_description = "for mysql"
     vpc_id = local.vpc_id
+    common_tags = var.common_tags
 }
 
 module "rabbitmq" {
@@ -40,6 +43,7 @@ module "rabbitmq" {
     sg_name = "rabbitmq"
     sg_description = "for rabbitmq"
     vpc_id = local.vpc_id
+    common_tags = var.common_tags
 }
 
 module "catalogue" {
@@ -51,6 +55,7 @@ module "catalogue" {
     sg_name = "catalogue"
     sg_description = "for catalogue"
     vpc_id = local.vpc_id
+    common_tags = var.common_tags
 }
 
 module "user" {
@@ -62,6 +67,7 @@ module "user" {
     sg_name = "user"
     sg_description = "for user"
     vpc_id = local.vpc_id
+    common_tags = var.common_tags
 }
 
 module "cart" {
@@ -85,6 +91,7 @@ module "shipping" {
     sg_name = "shipping"
     sg_description = "for shipping"
     vpc_id = local.vpc_id
+    common_tags = var.common_tags
 }
 
 module "payment" {
@@ -96,6 +103,7 @@ module "payment" {
     sg_name = "payment"
     sg_description = "for payment"
     vpc_id = local.vpc_id
+    common_tags = var.common_tags
 }
 
 module "backend_alb" {
@@ -107,6 +115,7 @@ module "backend_alb" {
     sg_name = "backend-alb"
     sg_description = "for backend alb"
     vpc_id = local.vpc_id
+    common_tags = var.common_tags
 }
 
 module "frontend" {
@@ -118,6 +127,7 @@ module "frontend" {
     sg_name = var.frontend_sg_name
     sg_description = var.frontend_sg_description
     vpc_id = local.vpc_id
+    common_tags = var.common_tags
 }
 
 module "frontend_alb" {
@@ -129,6 +139,7 @@ module "frontend_alb" {
     sg_name = "frontend-alb"
     sg_description = "for frontend alb"
     vpc_id = local.vpc_id
+    common_tags = var.common_tags
 }
 
 module "bastion" {
@@ -152,6 +163,7 @@ module "vpn" {
     sg_name = "vpn"
     sg_description = "for vpn"
     vpc_id = local.vpc_id
+    common_tags = var.common_tags
 }
 
 # MongoDB
