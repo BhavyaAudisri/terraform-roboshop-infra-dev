@@ -1,4 +1,4 @@
-variable "project" {
+variable "project_name" {
     default = "roboshop"
 }
 
@@ -36,4 +36,12 @@ variable "mysql_ports_vpn" {
 
 variable "rabbitmq_ports_vpn" {
     default = [22, 5672]
+}
+
+variable "common_tags" {
+    default = {
+        Project = "roboshop"
+        Environment = "dev"
+        Terraform = "true"
+    }
 }
