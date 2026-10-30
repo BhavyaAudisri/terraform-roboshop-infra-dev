@@ -6,7 +6,7 @@ variable "environment" {
     default = "dev"
 }
 
-variable "zone_i55861d" {
+variable "zone_id" {
     default = "Z00800132GKOZ4W8NRKN4"
 }
 
