@@ -7,7 +7,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "somi-tf-robo-dev"
+    bucket = "somi-tf-robo-dev-1"
     key    = "tf-robo-dev-db"
     region = "us-east-1"
     encrypt        = true
