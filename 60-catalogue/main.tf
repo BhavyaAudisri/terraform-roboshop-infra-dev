@@ -44,6 +44,10 @@ resource "terraform_data" "catalogue" {
     user     = "ec2-user"
     password = "DevOps321"
     host     = aws_instance.catalogue.private_ip
+      # Connect through Bastion
+    bastion_host = data.terraform_remote_state.bastion.outputs.bastion_public_ip
+    bastion_user = "ec2-user"
+    bastion_password = "DevOps321"
   }
 
   provisioner "remote-exec" {

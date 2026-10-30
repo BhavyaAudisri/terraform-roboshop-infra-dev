@@ -33,3 +33,12 @@ data "aws_ami" "joindevops" {
     values = ["hvm"]
   }
 }
+data "terraform_remote_state" "bastion" {
+  backend = "s3"
+
+  config = {
+    bucket = "somi-tf-robo-dev-1"
+    key    = "tf-robo-dev-bastion"
+    region = "us-east-1"
+  }
+}
