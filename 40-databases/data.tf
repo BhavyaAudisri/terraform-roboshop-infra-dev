@@ -38,3 +38,12 @@ data "aws_ssm_parameter" "database_subnet_ids" {
   name = "/${var.project_name}/${var.environment}/database_subnet_ids"
 }
 
+data "terraform_remote_state" "bastion" {
+  backend = "s3"
+
+  config = {
+    bucket = "somi-tf-robo-dev-1"
+    key    = "tf-robo-dev-bastion"
+    region = "us-east-1"
+  }
+}
