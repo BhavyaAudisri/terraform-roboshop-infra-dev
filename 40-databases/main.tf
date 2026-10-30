@@ -34,10 +34,10 @@ resource "terraform_data" "mongodb" {
     user     = "ec2-user"
     password = "DevOps321"
     host     = aws_instance.mongodb.private_ip
-        # Connect through Bastion
-   # bastion_host     = aws_instance.bastion.public_ip
-   # bastion_user     = "ec2-user"
-    #bastion_password = "DevOps321"
+    bastion_host     = aws_instance.bastion.public_ip
+    bastion_user     = "ec2-user"
+    bastion_password = "DevOps321"
+    
   }
 
   provisioner "remote-exec" {
@@ -84,6 +84,9 @@ resource "terraform_data" "redis" {
     user     = "ec2-user"
     password = "DevOps321"
     host     = aws_instance.redis.private_ip
+    bastion_host     = aws_instance.bastion.public_ip
+    bastion_user     = "ec2-user"
+    bastion_password = "DevOps321"
   }
 
   provisioner "remote-exec" {
