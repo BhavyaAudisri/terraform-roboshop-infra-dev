@@ -7,9 +7,9 @@ variable "environment" {
 }
 
 variable "zone_i55861d" {
-    default = "Z055853317ZUULRH6L095"
+    default = "Z00800132GKOZ4W8NRKN4"
 }
 
 variable "zone_name" {
-    default = "somisettibhavya.life"
+    default = "somisettibhavya.online"
 }
