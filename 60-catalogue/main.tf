@@ -207,5 +207,5 @@ resource "aws_route53_record" "main" {
   name    = "catalogue-${var.environment}-${var.zone_name}"
   type    = "A"
   ttl     = 5
-  records = [var.private_ip]
+  records = aws_instance.catalogue.private_ip
 }
