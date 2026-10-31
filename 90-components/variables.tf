@@ -1,7 +1,7 @@
 variable "components" {
     default = {
         catalogue = {
-            rule_priority = 10
+            rule_priority = 11
         }
         user = {
             rule_priority = 20
