@@ -201,3 +201,11 @@ resource "aws_lb_listener_rule" "catalogue" {
     }
   }
 }
+
+resource "aws_route53_record" "main" {
+  zone_id = var.zone_id
+  name    = "catalogue-${var.environment}-${var.zone_name}"
+  type    = "A"
+  ttl     = 5
+  records = [var.private_ip]
+}
